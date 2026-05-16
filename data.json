@@ -1,8 +1,8 @@
 [
   {
-    "name": "Apps Store",
-    "description": "Premium app store with exclusive applications and tools",
-    "icon": "📱",
+    "name": "ZeroXploit App Store",
+    "description": "Don't install app have have virus all rats available inside it Premium app store with exclusive applications and tools",
+    "icon": "images/appstore-icon.png",
     "downloadUrl": "https://www.mediafire.com/file/xbhm4rf7cmmx52m/Apps+Store.apk/file",
     "category": ["Tools"],
     "featured": true
@@ -10,7 +10,7 @@
   {
     "name": "Your Next App",
     "description": "Description here",
-    "icon": "🎮",
+    "icon": "images/your-app-icon.png",
     "downloadUrl": "https://www.mediafire.com/your-file.apk",
     "category": ["Category"],
     "featured": false
