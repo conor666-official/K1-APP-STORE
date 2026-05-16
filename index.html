@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>K1XTREME | SATANIC APP STORE</title>
+  <title>K1XTREME | DARK CULT APP STORE</title>
   <meta name="description" content="Forbidden satanic dark cult app store - enter the abyss">
   <meta name="author" content="k1xtreme">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -51,20 +51,15 @@
       pointer-events: none;
     }
 
-    .pentagram {
+    .pentagram-bg {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 80vmin;
-      height: 80vmin;
-      opacity: 0.08;
+      width: 90vmin;
+      height: 90vmin;
+      opacity: 0.06;
       animation: rotateSlow 40s linear infinite;
-    }
-
-    .pentagram svg {
-      width: 100%;
-      height: 100%;
     }
 
     @keyframes rotateSlow {
@@ -76,14 +71,14 @@
     .skull {
       position: absolute;
       font-size: 2rem;
-      opacity: 0.15;
+      opacity: 0.12;
       animation: floatSkull 15s ease-in-out infinite;
       pointer-events: none;
     }
 
     @keyframes floatSkull {
-      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.1; }
-      50% { transform: translateY(-30px) rotate(5deg); opacity: 0.2; }
+      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.08; }
+      50% { transform: translateY(-30px) rotate(5deg); opacity: 0.15; }
     }
 
     .skull:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; font-size: 3rem; }
@@ -92,12 +87,14 @@
     .skull:nth-child(4) { top: 40%; right: 10%; animation-delay: 2s; font-size: 2.2rem; }
     .skull:nth-child(5) { bottom: 50%; left: 15%; animation-delay: 8s; font-size: 1.8rem; }
     .skull:nth-child(6) { top: 80%; right: 20%; animation-delay: 4s; font-size: 2rem; }
+    .skull:nth-child(7) { top: 20%; right: 25%; animation-delay: 7s; font-size: 1.5rem; }
+    .skull:nth-child(8) { bottom: 30%; left: 20%; animation-delay: 5s; font-size: 2rem; }
 
     /* Blood Drops Animation */
     .blood-drop {
       position: absolute;
-      width: 4px;
-      height: 12px;
+      width: 3px;
+      height: 10px;
       background: linear-gradient(180deg, var(--blood), var(--blood-dark));
       border-radius: 2px;
       opacity: 0;
@@ -114,7 +111,7 @@
         opacity: 0.8;
       }
       90% {
-        opacity: 0.8;
+        opacity: 0.6;
       }
       100% {
         opacity: 0;
@@ -122,7 +119,7 @@
       }
     }
 
-    /* Loading Overlay */
+    /* ========== DEMONIC LOADING SCREEN ========== */
     .loading-overlay {
       position: fixed;
       top: 0;
@@ -134,37 +131,149 @@
       align-items: center;
       justify-content: center;
       z-index: 9999;
-      transition: opacity 0.8s ease;
+      transition: opacity 1s ease, visibility 1s ease;
     }
 
-    .loader-container {
+    .loading-container {
       text-align: center;
-      z-index: 10000;
+      position: relative;
     }
 
-    .pentagram-loader {
-      width: 100px;
-      height: 100px;
-      margin: 0 auto 1.5rem;
-      animation: spinReverse 2s linear infinite;
+    /* Demonic Star Cult Spin */
+    .demonic-star {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 2rem;
+      position: relative;
+      animation: starSpin 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     }
 
-    @keyframes spinReverse {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    .demonic-star svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 15px var(--blood));
+    }
+
+    @keyframes starSpin {
+      0% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(180deg) scale(1.1); }
+      100% { transform: rotate(360deg) scale(1); }
+    }
+
+    /* Pulsing Rings */
+    .loading-rings {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 160px;
+      height: 160px;
+    }
+
+    .ring {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 2px solid var(--blood);
+      border-radius: 50%;
+      opacity: 0;
+      animation: ringPulse 2s ease-out infinite;
+    }
+
+    .ring:nth-child(1) { animation-delay: 0s; }
+    .ring:nth-child(2) { animation-delay: 0.5s; width: 80%; height: 80%; top: 10%; left: 10%; }
+    .ring:nth-child(3) { animation-delay: 1s; width: 60%; height: 60%; top: 20%; left: 20%; }
+    .ring:nth-child(4) { animation-delay: 1.5s; width: 40%; height: 40%; top: 30%; left: 30%; }
+
+    @keyframes ringPulse {
+      0% {
+        opacity: 0.8;
+        transform: scale(0.5);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1.2);
+      }
+    }
+
+    /* Loading Text with Glitch Effect */
+    .loading-text-container {
+      margin-top: 2rem;
     }
 
     .loading-text {
       color: var(--blood);
-      font-size: 1rem;
-      letter-spacing: 4px;
+      font-size: 1.2rem;
+      letter-spacing: 6px;
       text-transform: uppercase;
-      animation: pulseText 1.5s ease-in-out infinite;
+      font-weight: 700;
+      position: relative;
+      animation: textPulse 1.5s ease-in-out infinite;
     }
 
-    @keyframes pulseText {
-      0%, 100% { opacity: 0.5; text-shadow: 0 0 5px var(--blood); }
-      50% { opacity: 1; text-shadow: 0 0 20px var(--blood); }
+    .loading-text::before,
+    .loading-text::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .loading-text::before {
+      animation: glitch1 0.5s infinite;
+      color: var(--blood-glow);
+      z-index: -1;
+    }
+
+    .loading-text::after {
+      animation: glitch2 0.5s infinite;
+      color: #ff0000;
+      z-index: -2;
+    }
+
+    @keyframes glitch1 {
+      0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+      50% { clip-path: inset(20% 0 30% 0); transform: translate(-2px, 0); }
+    }
+
+    @keyframes glitch2 {
+      0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+      50% { clip-path: inset(60% 0 10% 0); transform: translate(2px, 0); }
+    }
+
+    @keyframes textPulse {
+      0%, 100% { text-shadow: 0 0 5px var(--blood), 0 0 10px var(--blood-dark); opacity: 0.7; }
+      50% { text-shadow: 0 0 20px var(--blood), 0 0 30px var(--blood-glow); opacity: 1; }
+    }
+
+    /* Loading progress bar */
+    .loading-progress {
+      width: 200px;
+      height: 2px;
+      background: var(--border);
+      margin: 1.5rem auto 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .loading-progress::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, var(--blood), transparent);
+      animation: progressLoad 2s ease-in-out infinite;
+    }
+
+    @keyframes progressLoad {
+      0% { left: -100%; }
+      100% { left: 100%; }
     }
 
     /* Main Container */
@@ -178,7 +287,7 @@
 
     /* Navigation */
     .navbar {
-      background: rgba(5, 3, 8, 0.9);
+      background: rgba(5, 3, 8, 0.92);
       backdrop-filter: blur(12px);
       border-bottom: 2px solid var(--blood);
       position: sticky;
@@ -236,6 +345,7 @@
       font-weight: 600;
       transition: all 0.3s;
       position: relative;
+      cursor: pointer;
     }
 
     .nav-link::before {
@@ -346,7 +456,7 @@
       margin: 2rem 0;
     }
 
-    /* App Card with Animation */
+    /* App Card */
     .app-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -356,7 +466,6 @@
       position: relative;
       overflow: hidden;
       animation: cardFadeIn 0.5s ease backwards;
-      cursor: pointer;
     }
 
     @keyframes cardFadeIn {
@@ -414,13 +523,6 @@
     .app-card:hover .app-icon {
       transform: scale(1.05);
       border-color: var(--blood);
-    }
-
-    .app-icon img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 1rem;
     }
 
     .app-name {
@@ -617,10 +719,11 @@
 
 <!-- Animated Satanic Background -->
 <div class="satanic-bg">
-  <div class="pentagram">
+  <div class="pentagram-bg">
     <svg viewBox="0 0 100 100">
-      <polygon points="50,5 61,35 95,35 68,55 79,85 50,65 21,85 32,55 5,35 39,35" fill="none" stroke="#dc2626" stroke-width="1" opacity="0.3"/>
-      <circle cx="50" cy="50" r="45" fill="none" stroke="#dc2626" stroke-width="0.5" opacity="0.2"/>
+      <polygon points="50,5 61,35 95,35 68,55 79,85 50,65 21,85 32,55 5,35 39,35" fill="none" stroke="#dc2626" stroke-width="1.5" opacity="0.3"/>
+      <circle cx="50" cy="50" r="45" fill="none" stroke="#dc2626" stroke-width="0.8" opacity="0.15"/>
+      <path d="M50,5 L50,95 M5,35 L95,35 M21,85 L79,85 M32,55 L68,55" stroke="#dc2626" stroke-width="0.5" opacity="0.1"/>
     </svg>
   </div>
   <div class="skull">💀</div>
@@ -629,13 +732,30 @@
   <div class="skull">☠️</div>
   <div class="skull">💀</div>
   <div class="skull">☠️</div>
+  <div class="skull">💀</div>
+  <div class="skull">☠️</div>
 </div>
 
-<!-- Loading Overlay -->
+<!-- DEMONIC LOADING SCREEN -->
 <div id="loadingOverlay" class="loading-overlay">
-  <div class="loader-container">
-    <div class="pentagram-loader">⛧</div>
-    <p class="loading-text">Entering the abyss...</p>
+  <div class="loading-container">
+    <div class="loading-rings">
+      <div class="ring"></div>
+      <div class="ring"></div>
+      <div class="ring"></div>
+      <div class="ring"></div>
+    </div>
+    <div class="demonic-star">
+      <svg viewBox="0 0 100 100">
+        <polygon points="50,5 61,35 95,35 68,55 79,85 50,65 21,85 32,55 5,35 39,35" fill="none" stroke="#dc2626" stroke-width="2" stroke-linejoin="round"/>
+        <polygon points="50,15 57,33 76,33 60,47 66,66 50,53 34,66 40,47 24,33 43,33" fill="#dc2626" opacity="0.3"/>
+        <circle cx="50" cy="50" r="8" fill="#dc2626" opacity="0.6"/>
+      </svg>
+    </div>
+    <div class="loading-text-container">
+      <div class="loading-text" data-text="⛧ ENTER THE ABYSS ⛧">⛧ ENTER THE ABYSS ⛧</div>
+      <div class="loading-progress"></div>
+    </div>
   </div>
 </div>
 
@@ -689,9 +809,9 @@
     <div class="modal-content">
       <span class="modal-close" id="modalClose">✕</span>
       <h3 style="color: var(--blood); margin-bottom: 1rem;">⛧ CONTACT THE CULT ⛧</h3>
-      <div class="contact-row"><span>📱 Telegram:</span><span>@k1xtreme</span><a href="https://t.me/k1xtreme" target="_blank">Message</a></div>
-      <div class="contact-row"><span>🔥 Telegram 2:</span><span>@rizzlerdiddy</span><a href="https://t.me/rizzlerdiddy" target="_blank">Message</a></div>
-      <div class="contact-row"><span>✉️ Email:</span><span>k1xtreme@proton.me</span><a href="mailto:k1xtreme@proton.me">Send</a></div>
+      <div class="contact-row"><span>📱 Telegram:</span><span>@k1xtreme</span><a href="https://t.me/k1xtreme" target="_blank" style="color:var(--blood);">Message</a></div>
+      <div class="contact-row"><span>🔥 Telegram 2:</span><span>@rizzlerdiddy</span><a href="https://t.me/rizzlerdiddy" target="_blank" style="color:var(--blood);">Message</a></div>
+      <div class="contact-row"><span>✉️ Email:</span><span>k1xtreme@proton.me</span><a href="mailto:k1xtreme@proton.me" style="color:var(--blood);">Send</a></div>
     </div>
   </div>
 </div>
@@ -699,40 +819,20 @@
 <script>
   // Create blood drops dynamically
   function createBloodDrops() {
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 50; i++) {
       const drop = document.createElement('div');
       drop.className = 'blood-drop';
       drop.style.left = Math.random() * 100 + '%';
       drop.style.animationDelay = Math.random() * 5 + 's';
-      drop.style.animationDuration = 2 + Math.random() * 3 + 's';
+      drop.style.animationDuration = 2 + Math.random() * 4 + 's';
       drop.style.width = 2 + Math.random() * 4 + 'px';
-      drop.style.height = 8 + Math.random() * 12 + 'px';
+      drop.style.height = 8 + Math.random() * 15 + 'px';
       document.body.appendChild(drop);
     }
   }
 
-  // App Data - Edit this array to add your apps
+  // NO TEST APPS - Empty array, user must add their own apps via data.json
   let appsData = [];
-
-  // Default sample apps (replace with your own)
-  const defaultApps = [
-    {
-      name: "Shadow VPN",
-      description: "Secure encrypted tunnel - browse anonymously",
-      icon: "🛡️",
-      downloadUrl: "https://www.mediafire.com",
-      category: ["Security", "Tools"],
-      featured: true
-    },
-    {
-      name: "Dark Music",
-      description: "Satanic beats and dark ambient player",
-      icon: "🎵",
-      downloadUrl: "https://www.mediafire.com",
-      category: ["Music", "Entertainment"],
-      featured: false
-    }
-  ];
 
   let currentSearch = "";
   let currentCategory = "";
@@ -747,8 +847,10 @@
           return;
         }
       }
-    } catch(e) {}
-    appsData = defaultApps;
+    } catch(e) {
+      console.log('No data.json found. Create data.json with your apps.');
+    }
+    appsData = [];
   }
 
   function renderCategoryFilters() {
@@ -759,6 +861,10 @@
     const container = document.getElementById('filterTags');
     if (!container) return;
     container.innerHTML = '';
+    if (cats.size === 0) {
+      container.innerHTML = '<span style="color: var(--text-muted);">Add apps via data.json</span>';
+      return;
+    }
     cats.forEach(cat => {
       const chip = document.createElement('div');
       chip.className = 'filter-chip';
@@ -766,6 +872,7 @@
       chip.onclick = () => {
         currentCategory = currentCategory === cat ? '' : cat;
         renderAll();
+        renderCategoryFilters();
       };
       if (currentCategory === cat) chip.classList.add('active');
       container.appendChild(chip);
@@ -792,7 +899,7 @@
   function renderAppCard(app, isFeatured = false) {
     const card = document.createElement('div');
     card.className = 'app-card';
-    card.style.animationDelay = Math.random() * 0.2 + 's';
+    card.style.animationDelay = (Math.random() * 0.2) + 's';
     if (app.featured && !isFeatured) {
       const badge = document.createElement('div');
       badge.className = 'featured-badge';
@@ -836,7 +943,7 @@
       const featuredApps = appsData.filter(app => app.featured === true);
       featuredGrid.innerHTML = '';
       if (featuredApps.length === 0) {
-        featuredGrid.innerHTML = '<div class="no-results">⛧ No cursed selections yet ⛧</div>';
+        featuredGrid.innerHTML = '<div class="no-results">⛧ No cursed selections yet — add "featured": true to your app ⛧</div>';
       } else {
         featuredApps.forEach(app => featuredGrid.appendChild(renderAppCard(app, true)));
       }
@@ -856,7 +963,8 @@
   function clearAllFilters() {
     currentSearch = '';
     currentCategory = '';
-    document.getElementById('searchInput').value = '';
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) searchInput.value = '';
     renderAll();
     renderCategoryFilters();
   }
@@ -877,7 +985,7 @@
         if (target === 'featured') {
           document.getElementById('featuredSection')?.scrollIntoView({ behavior: 'smooth' });
         } else {
-          document.querySelector('.apps-section')?.scrollIntoView({ behavior: 'smooth' });
+          document.querySelector('section:last-of-type')?.scrollIntoView({ behavior: 'smooth' });
         }
         navLinks.forEach(l => l.classList.remove('active'));
         link.classList.add('active');
@@ -901,15 +1009,18 @@
     bindEvents();
     renderAll();
 
-    const loader = document.getElementById('loadingOverlay');
-    const content = document.getElementById('appContent');
-    if (loader && content) {
-      loader.style.opacity = '0';
-      setTimeout(() => {
-        loader.style.display = 'none';
-        content.style.display = 'block';
-      }, 800);
-    }
+    // Simulate loading time for dramatic effect
+    setTimeout(() => {
+      const loader = document.getElementById('loadingOverlay');
+      const content = document.getElementById('appContent');
+      if (loader && content) {
+        loader.style.opacity = '0';
+        setTimeout(() => {
+          loader.style.display = 'none';
+          content.style.display = 'block';
+        }, 800);
+      }
+    }, 2500);
   }
 
   document.addEventListener('DOMContentLoaded', init);
