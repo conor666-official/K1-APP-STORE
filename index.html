@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
-  <title>K1XTREME | DARK CULT APPS</title>
-  <meta name="description" content="Exclusive dark cult app store - secure downloads from the shadows">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>K1XTREME | SATANIC APPS</title>
+  <meta name="description" content="Exclusive satanic dark cult app store - forbidden downloads from the abyss">
   <meta name="author" content="k1xtreme">
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* ---------- DARK CULT THEME - FULLY RESPONSIVE ---------- */
+    /* ---------- SATANIC DARK CULT THEME ---------- */
     * {
       margin: 0;
       padding: 0;
@@ -17,24 +16,25 @@
     }
 
     :root {
-      --bg-primary: #0a0a0f;
-      --bg-surface: #111116;
-      --bg-elevated: #1a1a24;
-      --bg-card: #13131b;
-      --text-primary: #f0f0ff;
-      --text-secondary: #a0a0b8;
-      --text-muted: #6b6b8a;
-      --accent-primary: #8b5cf6;
-      --accent-secondary: #a855f7;
-      --accent-glow: #c084fc;
-      --accent-dark: #6d28d9;
+      --bg-primary: #050308;
+      --bg-surface: #0a0612;
+      --bg-elevated: #120c1c;
+      --bg-card: #0f0a18;
+      --text-primary: #e8e0f0;
+      --text-secondary: #b8a8d0;
+      --text-muted: #7a6a90;
+      --accent-primary: #dc2626;
+      --accent-secondary: #ef4444;
+      --accent-glow: #ff4444;
+      --accent-dark: #991b1b;
       --blood: #dc2626;
-      --blood-glow: #ef4444;
-      --border: #2a2a35;
-      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
-      --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
-      --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.5);
-      --shadow-hover: 0 15px 30px rgba(139, 92, 246, 0.2);
+      --blood-glow: #ff3333;
+      --satanic: #8b0000;
+      --border: #2a1a2a;
+      --shadow-sm: 0 2px 8px rgba(220, 38, 38, 0.2);
+      --shadow-md: 0 4px 12px rgba(220, 38, 38, 0.25);
+      --shadow-lg: 0 10px 25px rgba(220, 38, 38, 0.3);
+      --shadow-hover: 0 15px 35px rgba(220, 38, 38, 0.4);
       --radius-card: 1rem;
       --radius-lg: 1.5rem;
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -47,16 +47,43 @@
       line-height: 1.5;
       scroll-behavior: smooth;
       overflow-x: hidden;
+      position: relative;
     }
 
-    /* Loading Overlay - Dark Cult */
+    /* Satanic pentagram overlay */
+    body::before {
+      content: '⛧';
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      font-size: 4rem;
+      opacity: 0.08;
+      pointer-events: none;
+      z-index: 0;
+      font-family: monospace;
+    }
+
+    body::after {
+      content: '666';
+      position: fixed;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%) rotate(90deg);
+      font-size: 8rem;
+      opacity: 0.03;
+      pointer-events: none;
+      font-family: monospace;
+      letter-spacing: 20px;
+    }
+
+    /* Loading Overlay */
     .loading-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: #050508;
+      background: #020105;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -66,40 +93,55 @@
 
     .loader-container {
       text-align: center;
-      padding: 1rem;
     }
 
     .app-loader {
-      width: 70px;
-      height: 70px;
+      width: 80px;
+      height: 80px;
       border: 3px solid var(--border);
-      border-top: 3px solid var(--accent-primary);
+      border-top: 3px solid var(--blood);
       border-right: 3px solid var(--blood);
+      border-left: 3px solid var(--border);
+      border-bottom: 3px solid var(--border);
       border-radius: 50%;
-      animation: spin 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      animation: spinReverse 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
       margin: 0 auto 1.5rem;
-      box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+      box-shadow: 0 0 25px rgba(220, 38, 38, 0.5);
+      position: relative;
     }
 
-    @keyframes spin {
+    .app-loader::before {
+      content: '⛧';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.8rem;
+      color: var(--blood);
+    }
+
+    @keyframes spinReverse {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
 
     .loading-text {
-      color: var(--accent-primary);
-      font-weight: 600;
-      letter-spacing: 2px;
+      color: var(--blood);
+      font-weight: 700;
+      letter-spacing: 3px;
       text-transform: uppercase;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
+      text-shadow: 0 0 10px var(--blood);
     }
 
-    /* Container - Fluid Responsive */
+    /* Container */
     .container {
       width: 100%;
       max-width: 1280px;
       margin: 0 auto;
       padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
     }
 
     @media (max-width: 640px) {
@@ -108,15 +150,16 @@
       }
     }
 
-    /* Navigation - Fully Responsive */
+    /* Navigation */
     .navbar {
-      background: rgba(10, 10, 15, 0.95);
+      background: rgba(5, 3, 8, 0.95);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+      border-bottom: 2px solid var(--blood);
       position: sticky;
       top: 0;
       z-index: 100;
       width: 100%;
+      box-shadow: 0 0 20px rgba(220, 38, 38, 0.2);
     }
 
     .nav-container {
@@ -128,12 +171,6 @@
       gap: 0.8rem;
     }
 
-    @media (max-width: 640px) {
-      .nav-container {
-        padding: 0.8rem 1rem;
-      }
-    }
-
     .logo-area {
       display: flex;
       align-items: center;
@@ -141,41 +178,29 @@
     }
 
     .logo-icon {
-      font-size: 1.8rem;
-      filter: drop-shadow(0 0 8px var(--accent-primary));
+      font-size: 2rem;
+      filter: drop-shadow(0 0 12px var(--blood));
+      animation: pulseRed 2s infinite;
     }
 
-    @media (max-width: 480px) {
-      .logo-icon {
-        font-size: 1.5rem;
-      }
+    @keyframes pulseRed {
+      0%, 100% { filter: drop-shadow(0 0 8px var(--blood)); }
+      50% { filter: drop-shadow(0 0 20px var(--blood-glow)); }
     }
 
     .logo-text {
       font-weight: 800;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       letter-spacing: -0.5px;
-      background: linear-gradient(135deg, #c084fc, #a855f7, #dc2626);
+      background: linear-gradient(135deg, #ff4444, #dc2626, #991b1b);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
 
-    @media (max-width: 480px) {
-      .logo-text {
-        font-size: 1.1rem;
-      }
-    }
-
     .nav-links {
       display: flex;
       gap: 1.5rem;
-    }
-
-    @media (max-width: 480px) {
-      .nav-links {
-        gap: 1rem;
-      }
     }
 
     .nav-link {
@@ -185,13 +210,6 @@
       transition: var(--transition);
       cursor: pointer;
       position: relative;
-      font-size: 0.95rem;
-    }
-
-    @media (max-width: 480px) {
-      .nav-link {
-        font-size: 0.85rem;
-      }
     }
 
     .nav-link::after {
@@ -201,7 +219,7 @@
       left: 0;
       width: 0;
       height: 2px;
-      background: linear-gradient(90deg, var(--accent-primary), var(--blood));
+      background: var(--blood);
       transition: width 0.3s;
     }
 
@@ -210,46 +228,31 @@
     }
 
     .nav-link.active, .nav-link:hover {
-      color: var(--accent-primary);
+      color: var(--blood);
+      text-shadow: 0 0 5px var(--blood);
     }
 
     /* Hero Section */
     .hero-section {
-      padding: 3rem 0 2rem 0;
+      padding: 3.5rem 0 2.5rem 0;
       text-align: center;
       position: relative;
-    }
-
-    @media (max-width: 768px) {
-      .hero-section {
-        padding: 2rem 0 1.5rem;
-      }
+      border-bottom: 1px solid rgba(220, 38, 38, 0.3);
     }
 
     .hero-title {
-      font-size: 2.8rem;
+      font-size: 3.2rem;
       font-weight: 800;
       letter-spacing: -0.02em;
       margin-bottom: 1rem;
     }
 
-    @media (max-width: 768px) {
-      .hero-title {
-        font-size: 2rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-title {
-        font-size: 1.6rem;
-      }
-    }
-
     .gradient-text {
-      background: linear-gradient(135deg, #c084fc, #a855f7, #ef4444);
+      background: linear-gradient(135deg, #ff4444, #dc2626, #8b0000);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      text-shadow: 0 0 15px rgba(220, 38, 38, 0.5);
     }
 
     .hero-subtitle {
@@ -257,13 +260,6 @@
       color: var(--text-muted);
       max-width: 600px;
       margin: 0 auto;
-      padding: 0 1rem;
-    }
-
-    @media (max-width: 480px) {
-      .hero-subtitle {
-        font-size: 0.9rem;
-      }
     }
 
     /* Search & Filters */
@@ -299,8 +295,8 @@
 
     .search-input:focus {
       outline: none;
-      border-color: var(--accent-primary);
-      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+      border-color: var(--blood);
+      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.3);
     }
 
     .filter-tags {
@@ -322,10 +318,10 @@
     }
 
     .filter-chip.active, .filter-chip:hover {
-      background: linear-gradient(135deg, var(--accent-dark), var(--accent-primary));
+      background: var(--blood);
       color: white;
-      border-color: var(--accent-primary);
-      box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+      border-color: var(--blood);
+      box-shadow: 0 0 12px rgba(220, 38, 38, 0.5);
     }
 
     .btn-clear {
@@ -341,9 +337,10 @@
 
     .btn-clear:hover {
       color: var(--blood);
+      text-shadow: 0 0 3px var(--blood);
     }
 
-    /* App Grid - Responsive */
+    /* App Grid */
     .apps-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -358,7 +355,7 @@
       }
     }
 
-    /* App Card */
+    /* App Card - Satanic Style */
     .app-card {
       background: var(--bg-card);
       border-radius: var(--radius-card);
@@ -370,23 +367,14 @@
       flex-direction: column;
       position: relative;
       animation: fadeInUp 0.4s ease;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(15px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      cursor: pointer;
     }
 
     .app-card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-6px);
       box-shadow: var(--shadow-hover);
-      border-color: var(--accent-primary);
+      border-color: var(--blood);
+      border-width: 1px;
     }
 
     .card-header {
@@ -399,7 +387,7 @@
     .app-icon {
       width: 52px;
       height: 52px;
-      background: linear-gradient(145deg, #1a1a24, #0f0f18);
+      background: linear-gradient(145deg, #1a1025, #0f0a18);
       border-radius: 16px;
       display: flex;
       align-items: center;
@@ -408,6 +396,13 @@
       box-shadow: var(--shadow-sm);
       flex-shrink: 0;
       border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .app-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .app-name {
@@ -433,23 +428,23 @@
     }
 
     .category-tag {
-      background: rgba(139, 92, 246, 0.15);
-      color: var(--accent-primary);
+      background: rgba(220, 38, 38, 0.15);
+      color: var(--blood);
       font-size: 0.65rem;
       font-weight: 600;
       padding: 0.2rem 0.6rem;
       border-radius: 30px;
       text-transform: capitalize;
-      border: 1px solid rgba(139, 92, 246, 0.3);
+      border: 1px solid rgba(220, 38, 38, 0.3);
     }
 
     .download-btn {
-      background: linear-gradient(135deg, var(--accent-dark), var(--accent-primary));
+      background: linear-gradient(135deg, #991b1b, #dc2626);
       color: white;
       border: none;
       padding: 0.65rem 0;
       border-radius: 2rem;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.85rem;
       cursor: pointer;
       transition: var(--transition);
@@ -457,25 +452,27 @@
       text-align: center;
       text-decoration: none;
       display: inline-block;
+      letter-spacing: 1px;
     }
 
     .download-btn:hover {
-      background: linear-gradient(135deg, var(--accent-primary), var(--blood));
+      background: linear-gradient(135deg, #dc2626, #ef4444);
       transform: scale(0.98);
-      box-shadow: 0 0 12px rgba(139, 92, 246, 0.4);
+      box-shadow: 0 0 18px rgba(220, 38, 38, 0.7);
     }
 
     .featured-badge {
       position: absolute;
       top: 0.8rem;
       right: 0.8rem;
-      background: linear-gradient(135deg, var(--blood), #991b1b);
+      background: linear-gradient(135deg, #dc2626, #8b0000);
       color: #fff;
       font-size: 0.65rem;
       font-weight: bold;
       padding: 0.2rem 0.6rem;
       border-radius: 30px;
-      box-shadow: 0 0 6px rgba(220, 38, 38, 0.5);
+      box-shadow: 0 0 8px rgba(220, 38, 38, 0.6);
+      font-family: monospace;
     }
 
     .section-header {
@@ -488,15 +485,11 @@
     }
 
     .section-title {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       font-weight: 700;
       letter-spacing: -0.02em;
-    }
-
-    @media (max-width: 480px) {
-      .section-title {
-        font-size: 1.2rem;
-      }
+      color: var(--blood);
+      text-shadow: 0 0 5px rgba(220, 38, 38, 0.3);
     }
 
     .result-count {
@@ -522,12 +515,12 @@
       margin-bottom: 0.8rem;
     }
 
-    /* Contact Section - Modal Style */
+    /* Contact Trigger - Satanic */
     .contact-trigger {
       position: fixed;
       bottom: 2rem;
       right: 2rem;
-      background: linear-gradient(135deg, var(--accent-dark), var(--blood));
+      background: linear-gradient(135deg, #991b1b, #dc2626);
       width: 56px;
       height: 56px;
       border-radius: 50%;
@@ -535,31 +528,25 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+      box-shadow: 0 0 20px rgba(220, 38, 38, 0.6);
       transition: var(--transition);
       z-index: 90;
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      animation: pulseBorder 2s infinite;
+    }
+
+    @keyframes pulseBorder {
+      0%, 100% { box-shadow: 0 0 10px rgba(220, 38, 38, 0.6); }
+      50% { box-shadow: 0 0 25px rgba(220, 38, 38, 1); }
     }
 
     .contact-trigger:hover {
-      transform: scale(1.08);
-      box-shadow: 0 6px 20px rgba(220, 38, 38, 0.5);
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(220, 38, 38, 0.9);
     }
 
     .contact-trigger span {
       font-size: 1.6rem;
-    }
-
-    @media (max-width: 640px) {
-      .contact-trigger {
-        bottom: 1.2rem;
-        right: 1.2rem;
-        width: 48px;
-        height: 48px;
-      }
-      .contact-trigger span {
-        font-size: 1.4rem;
-      }
     }
 
     /* Modal */
@@ -570,7 +557,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.85);
+      background: rgba(0, 0, 0, 0.95);
       backdrop-filter: blur(8px);
       z-index: 1000;
       align-items: center;
@@ -590,7 +577,7 @@
 
     .modal-content {
       background: var(--bg-surface);
-      border: 1px solid var(--border);
+      border: 2px solid var(--blood);
       border-radius: 1.5rem;
       max-width: 420px;
       width: 100%;
@@ -598,6 +585,7 @@
       text-align: center;
       position: relative;
       animation: slideUp 0.3s ease;
+      box-shadow: 0 0 40px rgba(220, 38, 38, 0.3);
     }
 
     @keyframes slideUp {
@@ -628,7 +616,7 @@
     .modal-title {
       font-size: 1.5rem;
       margin-bottom: 1rem;
-      background: linear-gradient(135deg, var(--accent-primary), var(--blood));
+      background: linear-gradient(135deg, #ff4444, #dc2626);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
@@ -653,7 +641,7 @@
 
     .contact-label {
       font-weight: 600;
-      color: var(--accent-primary);
+      color: var(--blood);
     }
 
     .contact-value {
@@ -674,8 +662,9 @@
     }
 
     .contact-link-btn:hover {
-      border-color: var(--accent-primary);
-      background: var(--accent-dark);
+      border-color: var(--blood);
+      background: var(--blood);
+      color: white;
     }
 
     .footer {
@@ -687,16 +676,14 @@
       font-size: 0.75rem;
     }
 
-    @media (max-width: 480px) {
-      .footer {
-        padding: 1.2rem;
-        font-size: 0.7rem;
-      }
+    .satanic-symbol {
+      display: inline-block;
+      animation: spinSlow 4s linear infinite;
     }
 
-    /* Smooth Scroll */
-    html {
-      scroll-behavior: smooth;
+    @keyframes spinSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
   </style>
 </head>
@@ -705,7 +692,7 @@
 <div id="loading-overlay" class="loading-overlay">
   <div class="loader-container">
     <div class="app-loader"></div>
-    <p class="loading-text">⟁ ENTER THE CULT ⟁</p>
+    <p class="loading-text">⛧ HAIL SATAN ⛧</p>
   </div>
 </div>
 
@@ -714,7 +701,7 @@
     <div class="nav-container">
       <div class="logo-area">
         <span class="logo-icon">⛧</span>
-        <span class="logo-text">K1XTREME<span style="color: #dc2626;">CULT</span></span>
+        <span class="logo-text">K1XTREME<span style="color: #dc2626;">SATAN</span></span>
       </div>
       <div class="nav-links">
         <a class="nav-link active" data-nav="all">All Apps</a>
@@ -725,15 +712,15 @@
 
   <section class="hero-section">
     <div class="container">
-      <h1 class="hero-title">Enter the <span class="gradient-text">Dark Cult</span></h1>
-      <p class="hero-subtitle">Exclusive shadow-coded applications • For the chosen ones only</p>
+      <h1 class="hero-title">HAIL <span class="gradient-text">SATAN</span></h1>
+      <p class="hero-subtitle">Forbidden dark applications • Signed in blood • 666</p>
     </div>
   </section>
 
   <div class="container filter-section">
     <div class="search-wrapper">
       <span class="search-icon">🔍</span>
-      <input type="text" id="search-input" class="search-input" placeholder="Search arcane apps...">
+      <input type="text" id="search-input" class="search-input" placeholder="Search forbidden apps...">
     </div>
     <div id="filter-tags-container" class="filter-tags"></div>
     <div id="clear-filters-btn" style="display: none;">
@@ -743,22 +730,22 @@
 
   <section id="featured-section" class="featured-section container">
     <div class="section-header">
-      <h2 class="section-title">✦ Forbidden Selections ✦</h2>
-      <span class="section-meta">cult classics</span>
+      <h2 class="section-title">⛧ FORBIDDEN SELECTIONS ⛧</h2>
+      <span class="section-meta">marked by the beast</span>
     </div>
     <div id="featured-grid" class="apps-grid"></div>
   </section>
 
   <section class="apps-section container">
     <div class="section-header">
-      <h2 class="section-title">◈ Grimoire Collection ◈</h2>
+      <h2 class="section-title">◈ GRIMOIRE COLLECTION ◈</h2>
       <span id="result-count" class="result-count"></span>
     </div>
     <div id="apps-grid" class="apps-grid"></div>
     <div id="no-results" class="no-results-message" style="display: none;">
       <div class="empty-state">
-        <span class="empty-icon">🜍</span>
-        <h3>Void... no apps found</h3>
+        <span class="empty-icon">⛧</span>
+        <h3>Abyss... no apps found</h3>
         <p>The darkness holds no matches for your query</p>
       </div>
     </div>
@@ -766,20 +753,18 @@
 
   <footer class="footer">
     <div class="container">
-      <p>© 2025 K1XTREME CULT • Shadow code • All downloads redirect to trusted sources</p>
+      <p>© 2025 K1XTREME SATAN • <span class="satanic-symbol">⛧</span> 666 <span class="satanic-symbol">⛧</span> • Add apps by editing <strong style="color:var(--blood)">data.json</strong></p>
     </div>
   </footer>
 
-  <!-- Contact Trigger Button -->
   <div class="contact-trigger" id="contactTrigger">
     <span>📞</span>
   </div>
 
-  <!-- Contact Modal -->
   <div id="contactModal" class="modal">
     <div class="modal-content">
       <div class="modal-close" id="modalClose">✕</div>
-      <h3 class="modal-title">𓋹 CONTACT THE CULT 𓋹</h3>
+      <h3 class="modal-title">⛧ CONTACT THE CULT ⛧</h3>
       <div class="contact-info-modal">
         <div class="contact-row">
           <span class="contact-label">📱 Telegram:</span>
@@ -797,53 +782,77 @@
           <a href="mailto:k1xtreme@proton.me" class="contact-link-btn">Send</a>
         </div>
       </div>
-      <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 1rem;">Reach out for inquiries or collaborations</p>
+      <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 1rem;">⛧ Hail Satan • 666 ⛧</p>
     </div>
   </div>
 </div>
 
 <script>
   // ============================================
-  // DARK CULT APP STORE - DATA MANAGEMENT
+  // SATANIC APP STORE - DATA FROM data.json
   // ============================================
-  // Add your apps here by editing the APPS array
-  // Structure:
-  // {
-  //   "name": "App Name",
-  //   "description": "App description",
-  //   "icon": "📱",  // emoji or image path
-  //   "downloadUrl": "https://www.mediafire.com/...",
-  //   "category": ["Category1", "Category2"],
-  //   "featured": true/false
-  // }
+  // To add apps: edit data.json file in the same folder
+  // Format:
+  // [
+  //   {
+  //     "name": "New App",
+  //     "description": "Awesome app description",
+  //     "icon": "images/new-app.png",
+  //     "downloadUrl": "https://www.mediafire.com/file/xyz123/NewApp.apk/file",
+  //     "category": ["Tools"],
+  //     "featured": false
+  //   }
+  // ]
   
-  const APPS = [
-    // ADD YOUR APPS BELOW - Delete these examples and add your own
-    // Example format:
-    // {
-    //   "name": "Shadow Tool Pro",
-    //   "description": "Advanced dark utility for the initiated",
-    //   "icon": "🗡️",
-    //   "downloadUrl": "https://www.mediafire.com/file/example",
-    //   "category": ["Tools", "Security"],
-    //   "featured": true
-    // }
-  ];
-
   let appsData = [];
   let currentSearchTerm = "";
   let activeCategoryFilter = "";
 
-  function loadApps() {
-    appsData = APPS.map((app, index) => ({
-      id: index,
-      name: app.name,
-      description: app.description,
-      icon: app.icon || '🜍',
-      downloadUrl: app.downloadUrl,
-      category: Array.isArray(app.category) ? app.category : [app.category || 'Arcane'],
-      featured: app.featured || false
-    }));
+  async function loadApps() {
+    try {
+      const response = await fetch('data.json');
+      if (response.ok) {
+        const data = await response.json();
+        if (Array.isArray(data)) {
+          appsData = data.map((app, index) => ({
+            id: index,
+            name: app.name,
+            description: app.description,
+            icon: app.icon || '⛧',
+            downloadUrl: app.downloadUrl,
+            category: Array.isArray(app.category) ? app.category : [app.category || 'Forbidden'],
+            featured: app.featured || false
+          }));
+          return;
+        }
+      }
+      throw new Error('No data.json');
+    } catch (e) {
+      console.log('Create data.json with your apps');
+      appsData = [];
+    }
+  }
+
+  function setupIcon(iconDiv, iconPath) {
+    if (iconPath && (iconPath.endsWith('.png') || iconPath.endsWith('.jpg') || iconPath.endsWith('.jpeg') || iconPath.endsWith('.svg') || iconPath.endsWith('.webp') || iconPath.includes('/'))) {
+      const img = document.createElement('img');
+      img.src = iconPath;
+      img.alt = 'app icon';
+      img.onerror = function() {
+        img.style.display = 'none';
+        const fallback = document.createElement('span');
+        fallback.className = 'fallback-emoji';
+        fallback.textContent = '⛧';
+        iconDiv.innerHTML = '';
+        iconDiv.appendChild(fallback);
+      };
+      iconDiv.appendChild(img);
+    } else {
+      const fallback = document.createElement('span');
+      fallback.className = 'fallback-emoji';
+      fallback.textContent = iconPath || '⛧';
+      iconDiv.appendChild(fallback);
+    }
   }
 
   function renderAppCard(app, isFeaturedGrid = false) {
@@ -853,7 +862,7 @@
     if (app.featured && !isFeaturedGrid) {
       const badge = document.createElement('div');
       badge.className = 'featured-badge';
-      badge.textContent = '✦ CULT ✦';
+      badge.textContent = '⛧ 666 ⛧';
       card.appendChild(badge);
     } else if (app.featured && isFeaturedGrid) {
       const badge = document.createElement('div');
@@ -867,7 +876,7 @@
     
     const iconDiv = document.createElement('div');
     iconDiv.className = 'app-icon';
-    iconDiv.textContent = app.icon || '🜍';
+    setupIcon(iconDiv, app.icon);
     
     const nameDiv = document.createElement('div');
     nameDiv.className = 'app-name';
@@ -940,7 +949,7 @@
     if (!container) return;
     container.innerHTML = '';
     if (allCategories.size === 0) {
-      container.innerHTML = '<span style="color: var(--text-muted); font-size:0.85rem;">awaiting arcane entries...</span>';
+      container.innerHTML = '<span style="color: var(--text-muted);">awaiting dark entries...</span>';
       return;
     }
     Array.from(allCategories).sort().forEach(cat => {
@@ -1014,7 +1023,7 @@
     if (featuredGrid) {
       featuredGrid.innerHTML = '';
       if (featuredApps.length === 0) {
-        featuredGrid.innerHTML = '<div style="padding:1.5rem; text-align:center; color: var(--text-muted);">⚔️ No forbidden selections yet — add "featured": true ⚔️</div>';
+        featuredGrid.innerHTML = '<div style="padding:1.5rem; text-align:center; color: var(--text-muted);">⛧ No forbidden selections yet — add "featured": true ⛧</div>';
       } else {
         featuredApps.forEach(app => {
           featuredGrid.appendChild(renderAppCard(app, true));
@@ -1052,7 +1061,6 @@
       });
     });
 
-    // Modal contact functionality
     const trigger = document.getElementById('contactTrigger');
     const modal = document.getElementById('contactModal');
     const closeBtn = document.getElementById('modalClose');
@@ -1072,8 +1080,8 @@
     }
   }
 
-  function initApp() {
-    loadApps();
+  async function initApp() {
+    await loadApps();
     renderCategoryFilters();
     bindEvents();
     renderAllSections();
@@ -1085,7 +1093,7 @@
       setTimeout(() => {
         loader.style.display = 'none';
         appContent.style.display = 'block';
-      }, 500);
+      }, 800);
     }
   }
 
