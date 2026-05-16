@@ -119,7 +119,7 @@
       }
     }
 
-    /* ========== DEMONIC LOADING SCREEN ========== */
+    /* Demonic Loading Screen */
     .loading-overlay {
       position: fixed;
       top: 0;
@@ -139,7 +139,6 @@
       position: relative;
     }
 
-    /* Demonic Star Cult Spin */
     .demonic-star {
       width: 120px;
       height: 120px;
@@ -160,7 +159,6 @@
       100% { transform: rotate(360deg) scale(1); }
     }
 
-    /* Pulsing Rings */
     .loading-rings {
       position: absolute;
       top: 50%;
@@ -198,11 +196,6 @@
       }
     }
 
-    /* Loading Text with Glitch Effect */
-    .loading-text-container {
-      margin-top: 2rem;
-    }
-
     .loading-text {
       color: var(--blood);
       font-size: 1.2rem;
@@ -213,44 +206,11 @@
       animation: textPulse 1.5s ease-in-out infinite;
     }
 
-    .loading-text::before,
-    .loading-text::after {
-      content: attr(data-text);
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    .loading-text::before {
-      animation: glitch1 0.5s infinite;
-      color: var(--blood-glow);
-      z-index: -1;
-    }
-
-    .loading-text::after {
-      animation: glitch2 0.5s infinite;
-      color: #ff0000;
-      z-index: -2;
-    }
-
-    @keyframes glitch1 {
-      0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
-      50% { clip-path: inset(20% 0 30% 0); transform: translate(-2px, 0); }
-    }
-
-    @keyframes glitch2 {
-      0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
-      50% { clip-path: inset(60% 0 10% 0); transform: translate(2px, 0); }
-    }
-
     @keyframes textPulse {
-      0%, 100% { text-shadow: 0 0 5px var(--blood), 0 0 10px var(--blood-dark); opacity: 0.7; }
-      50% { text-shadow: 0 0 20px var(--blood), 0 0 30px var(--blood-glow); opacity: 1; }
+      0%, 100% { text-shadow: 0 0 5px var(--blood); opacity: 0.7; }
+      50% { text-shadow: 0 0 20px var(--blood); opacity: 1; }
     }
 
-    /* Loading progress bar */
     .loading-progress {
       width: 200px;
       height: 2px;
@@ -518,6 +478,14 @@
       font-size: 2rem;
       border: 1px solid var(--border);
       transition: all 0.3s;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .app-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .app-card:hover .app-icon {
@@ -528,6 +496,7 @@
     .app-name {
       font-size: 1.2rem;
       font-weight: 700;
+      word-break: break-word;
     }
 
     .app-desc {
@@ -691,6 +660,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
 
     .footer {
@@ -712,6 +683,7 @@
       .hero-title { font-size: 2rem; }
       .apps-grid { grid-template-columns: 1fr; }
       .nav-container { flex-direction: column; gap: 1rem; }
+      .contact-row { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
@@ -752,10 +724,8 @@
         <circle cx="50" cy="50" r="8" fill="#dc2626" opacity="0.6"/>
       </svg>
     </div>
-    <div class="loading-text-container">
-      <div class="loading-text" data-text="⛧ ENTER THE ABYSS ⛧">⛧ ENTER THE ABYSS ⛧</div>
-      <div class="loading-progress"></div>
-    </div>
+    <div class="loading-text">⛧ ENTER THE ABYSS ⛧</div>
+    <div class="loading-progress"></div>
   </div>
 </div>
 
@@ -831,26 +801,26 @@
     }
   }
 
-  // NO TEST APPS - Empty array, user must add their own apps via data.json
   let appsData = [];
-
   let currentSearch = "";
   let currentCategory = "";
 
   async function loadApps() {
     try {
-      const response = await fetch('data.json');
+      const response = await fetch('data.json?v=' + Date.now());
       if (response.ok) {
-        const data = await response.json();
-        if (Array.isArray(data) && data.length > 0) {
-          appsData = data;
-          return;
-        }
+        appsData = await response.json();
+        console.log("Loaded apps:", appsData);
+      } else {
+        console.log("data.json not found, using default");
+        appsData = [];
       }
     } catch(e) {
-      console.log('No data.json found. Create data.json with your apps.');
+      console.log("Error loading apps:", e);
+      appsData = [];
     }
-    appsData = [];
+    renderAll();
+    renderCategoryFilters();
   }
 
   function renderCategoryFilters() {
@@ -867,14 +837,13 @@
     }
     cats.forEach(cat => {
       const chip = document.createElement('div');
-      chip.className = 'filter-chip';
+      chip.className = 'filter-chip' + (currentCategory === cat ? ' active' : '');
       chip.textContent = cat;
       chip.onclick = () => {
         currentCategory = currentCategory === cat ? '' : cat;
-        renderAll();
         renderCategoryFilters();
+        renderAll();
       };
-      if (currentCategory === cat) chip.classList.add('active');
       container.appendChild(chip);
     });
   }
@@ -896,36 +865,89 @@
     return filtered;
   }
 
+  // Helper function to create icon element (handles both image URLs and emojis)
+  function createIconElement(iconValue, appName) {
+    const iconDiv = document.createElement('div');
+    iconDiv.className = 'app-icon';
+    
+    // Check if icon is a URL (starts with http:// or https:// or contains githubusercontent or mediafire)
+    const isUrl = iconValue && (iconValue.startsWith('http://') || iconValue.startsWith('https://') || iconValue.includes('raw.githubusercontent.com'));
+    
+    if (isUrl) {
+      const img = document.createElement('img');
+      img.src = iconValue;
+      img.alt = appName || 'app icon';
+      img.onerror = function() {
+        // If image fails to load, show fallback
+        iconDiv.innerHTML = '⛧';
+        iconDiv.style.fontSize = '2rem';
+        iconDiv.style.display = 'flex';
+        iconDiv.style.alignItems = 'center';
+        iconDiv.style.justifyContent = 'center';
+      };
+      iconDiv.appendChild(img);
+    } else {
+      // Show as text/emoji
+      iconDiv.textContent = iconValue || '⛧';
+      iconDiv.style.fontSize = '2rem';
+      iconDiv.style.display = 'flex';
+      iconDiv.style.alignItems = 'center';
+      iconDiv.style.justifyContent = 'center';
+    }
+    
+    return iconDiv;
+  }
+
   function renderAppCard(app, isFeatured = false) {
     const card = document.createElement('div');
     card.className = 'app-card';
     card.style.animationDelay = (Math.random() * 0.2) + 's';
+    
     if (app.featured && !isFeatured) {
       const badge = document.createElement('div');
       badge.className = 'featured-badge';
       badge.textContent = '⛧ CURSED ⛧';
       card.appendChild(badge);
     }
-    card.innerHTML += `
-      <div class="card-header">
-        <div class="app-icon">${app.icon || '⛧'}</div>
-        <div class="app-name">${escapeHtml(app.name)}</div>
-      </div>
-      <div class="app-desc">${escapeHtml(app.description)}</div>
-      <div class="categories">${(app.category || []).map(c => `<span class="category-tag">${escapeHtml(c)}</span>`).join('')}</div>
-      <a href="${app.downloadUrl}" target="_blank" class="download-btn">⬇️ DESCEND</a>
-    `;
-    return card;
-  }
-
-  function escapeHtml(str) {
-    if (!str) return '';
-    return str.replace(/[&<>]/g, function(m) {
-      if (m === '&') return '&amp;';
-      if (m === '<') return '&lt;';
-      if (m === '>') return '&gt;';
-      return m;
+    
+    const headerDiv = document.createElement('div');
+    headerDiv.className = 'card-header';
+    
+    // Use the helper function for icon
+    const iconDiv = createIconElement(app.icon, app.name);
+    headerDiv.appendChild(iconDiv);
+    
+    const nameDiv = document.createElement('div');
+    nameDiv.className = 'app-name';
+    nameDiv.textContent = app.name;
+    headerDiv.appendChild(nameDiv);
+    
+    const desc = document.createElement('div');
+    desc.className = 'app-desc';
+    desc.textContent = app.description;
+    
+    const catDiv = document.createElement('div');
+    catDiv.className = 'categories';
+    (app.category || []).forEach(c => {
+      const span = document.createElement('span');
+      span.className = 'category-tag';
+      span.textContent = c;
+      catDiv.appendChild(span);
     });
+    
+    const downloadLink = document.createElement('a');
+    downloadLink.href = app.downloadUrl;
+    downloadLink.target = "_blank";
+    downloadLink.rel = "noopener noreferrer";
+    downloadLink.className = 'download-btn';
+    downloadLink.textContent = '⬇️ DESCEND ⬇️';
+    
+    card.appendChild(headerDiv);
+    card.appendChild(desc);
+    card.appendChild(catDiv);
+    card.appendChild(downloadLink);
+    
+    return card;
   }
 
   function renderAll() {
@@ -1005,10 +1027,8 @@
   async function init() {
     createBloodDrops();
     await loadApps();
-    renderCategoryFilters();
     bindEvents();
-    renderAll();
-
+    
     // Simulate loading time for dramatic effect
     setTimeout(() => {
       const loader = document.getElementById('loadingOverlay');
