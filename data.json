@@ -1,1 +1,18 @@
-{"name":"Test","description":"Test app","icon":"📱","downloadUrl":"#","category":["Test"],"featured":false}
+[
+  {
+    "name": "Apps Store",
+    "description": "Premium app store with exclusive applications and tools",
+    "icon": "📱",
+    "downloadUrl": "https://www.mediafire.com/file/xbhm4rf7cmmx52m/Apps+Store.apk/file",
+    "category": ["Tools"],
+    "featured": true
+  },
+  {
+    "name": "Your Next App",
+    "description": "Description here",
+    "icon": "🎮",
+    "downloadUrl": "https://www.mediafire.com/your-file.apk",
+    "category": ["Category"],
+    "featured": false
+  }
+]
